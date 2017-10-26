@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardListComponent implements OnInit {
   posts: any[] = [
-    {title: "a", contents: "content a"}];
+    {title: "Title a", contents: "Content a"},
+    {title: "Title b", contents: "Content b"}];
 
   constructor() { }
 

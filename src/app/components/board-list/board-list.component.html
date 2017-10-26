@@ -1,5 +1,16 @@
-<h1>dddd</h1>
-<div *ngFor = "let post of posts">
-  {{post.title}}<br>
-  {{post.contents}}
-</div>
+<br>
+<br>
+<table class="table table-noborder">
+  <thead>
+      <tr>
+          <th>Title</th>
+          <th class="left">Contents</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let post of posts">
+          <td>{{post.title}}</td>
+          <td class="left">{{post.contents}}</td>
+      </tr>
+  </tbody>
+</table>
