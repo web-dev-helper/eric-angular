@@ -30,4 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 https://web-dev-helper.github.io/eric-angular/
 
 ## Command to build
-ng build --prod --output-path docs --base-href "https://web-dev-helper.github.io/eric-angular/"
+`ng build --prod --output-path docs --base-href "https://web-dev-helper.github.io/eric-angular/"`
