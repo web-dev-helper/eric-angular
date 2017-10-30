@@ -1,18 +1,4 @@
-<header class="header-5">
-    <div class="branding">
-        <a href="" class="nav-link">
-            <clr-icon shape="airplane"></clr-icon>
-            <span class="title">Eric's Angular</span>
-        </a>
-    </div>
-    <div class="header-nav">
-        <a href="/board-list" class="active nav-link nav-text">Dashboard</a>
-        <a href="/faq" class="nav-link nav-text">FAQ</a>
-    </div>
-    <div class="header-actions">
-        <a href="javascript://" class="nav-link nav-icon">
-            <clr-icon shape="cog"></clr-icon>
-        </a>
-    </div>
-</header>
-<app-board-list></app-board-list>
+<app-navbar></app-navbar>
+<div class="containter">
+    <router-outlet></router-outlet>
+</div>
