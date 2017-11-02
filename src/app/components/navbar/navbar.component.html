@@ -14,7 +14,27 @@
         class="nav-link nav-text">About</a>
   </div>
   <div class="header-actions">
-      <a href="javascript://" class="nav-link nav-icon">
+        <clr-dropdown>
+            <button class="nav-icon" clrDropdownTrigger>
+                <div *ngIf="loginInd; else elseBlock">
+                    <clr-icon shape="user" class="is-solid"></clr-icon>
+                </div>
+                <ng-template #elseBlock>
+                    <clr-icon shape="user"></clr-icon>
+                </ng-template>
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                <div *ngIf="loginInd; else elseBlock">
+                    <a href="..." clrDropdownItem>Preferences</a>
+                    <a href="..." clrDropdownItem>Log out</a>
+                </div>
+                <ng-template #elseBlock>
+                        <a routerLink="/login" routerLinkActive="active" clrDropdownItem>Login</a>
+                </ng-template>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+      <a href="..." class="nav-link nav-icon">
           <clr-icon shape="cog"></clr-icon>
       </a>
   </div>

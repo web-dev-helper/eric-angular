@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-board-list',
@@ -6,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board-list.component.css']
 })
 export class BoardListComponent implements OnInit {
-  posts: any[] = [
-    {title: "Title a", contents: "Content a"},
-    {title: "Title b", contents: "Content b"}];
+  posts: any[];
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
+    this.postService.getPosts().subscribe(posts => {
+      this.posts = posts;
+    })
   }
 
 }

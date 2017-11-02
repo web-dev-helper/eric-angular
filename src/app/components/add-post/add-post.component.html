@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-6">
+      <a routerLink="/board-list" href="#" class="btn btn-link">
+        Back To Dashboard
+      </a>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header">
+      Add Post
+    </div>
+    <div class="card-block">
+      <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)" [hidden]="submitted">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <label for="title"
+            aria-haspopup="true"
+            role="tooltip"
+            class="tooltip tooltip-validation tooltip-md"
+            [class.invalid]="titleInput.invalid && (titleInput.dirty || titleInput.touched)">         
+            <input type="text" id="title" placeholder="Enter title"
+              [(ngModel)]="post.title"
+              name="title"
+              #titleInput = "ngModel"
+              minlength="2"
+              required
+            >
+            <span class="tooltip-content">
+              <div *ngIf="titleInput.errors?.required && (titleInput.dirty || titleInput.touched)">
+                Title is required
+              </div>
+              <div *ngIf="titleInput.errors?.minlength && (titleInput.dirty || titleInput.touched)">
+                Title should be at least 2 characters
+              </div>
+            </span>
+          </label>
+        </div>
+        
+        <div class="form-group">
+          <label for="author">Author</label>
+          <label for="author"
+            aria-haspopup="true"
+            role="tooltip"
+            class="tooltip tooltip-validation tooltip-md"
+            [class.invalid]="authorInput.invalid && (authorInput.dirty || authorInput.touched)">         
+            <input type="text" id="author" placeholder="Enter your name"
+              [(ngModel)]="post.author"
+              name="author"
+              #authorInput = "ngModel"
+              minlength="2"
+              required
+            >
+            <span class="tooltip-content">
+              <div *ngIf="authorInput.errors?.required && (authorInput.dirty || authorInput.touched)">
+                Author is required
+              </div>
+              <div *ngIf="authorInput.errors?.minlength && (authorInput.dirty || authorInput.touched)">
+                Author should be at least 2 characters
+              </div>
+            </span>
+          </label>
+        </div>
+        
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea type="text" id="content" placeholder="Please write content"
+            [(ngModel)]="post.content"
+            name="content"
+            #contentInput = "ngModel"
+            rows="5"
+            required
+          ></textarea>
+          <div class="alert alert-danger col-md-12" 
+            *ngIf="contentInput.invalid && (contentInput.dirty || authorInput.touched)">
+            <div class="alert-item static">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                </div>
+                <span class="alert-text">Content is required</span>
+            </div>  
+          </div>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary btn-block"
+          [disabled]="postForm.form.invalid">
+      </form>
+    </div>
+  </div>
