@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-6">
+      <a routerLink="/board-list" href="#" class="btn btn-link">
+        Back To Dashboard
+      </a>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header">
+      Add Post
+    </div>
+    <div class="card-body">
+      <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input 
+            type="text"
+            class="form-control"
+            [ngClass]="{'is-invalid':author.errors?.required && author.touched || author.errors?.minlength}"
+            [(ngModel)]="post.author"
+            name="author"
+            #author = "ngModel"
+            minlength="2"
+            required
+          >
+          <div *ngIf="author.errors?.required && author.touched" class="alert alert-danger">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        Author is required.
+                    </span>
+                </div>
+            </div>
+          </div>
+          <div *ngIf="author.errors?.minlength && author.touched" class="alert alert-danger">
+            Must be at least 2 characters
+          </div>
+        </div>
+ 
+        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+      </form>
+    </div>
+  </div>
