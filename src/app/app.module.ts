@@ -18,14 +18,18 @@ import { PostService } from './services/post.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
-import { FlashMessagesModule } from 'angular2-flash-messages'
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component'
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'about', component:AboutComponent},
   {path:'board-list', component:BoardListComponent},
   {path:'login', component:LoginComponent},
-  {path:'add-post', component:AddPostComponent}
+  {path:'add-post', component:AddPostComponent},
+  {path:'post/:id', component: PostDetailsComponent},
+  {path:'edit-post/:id', component: EditPostComponent}
 ]
 
 @NgModule({
@@ -37,7 +41,9 @@ const routes: Routes = [
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    AddPostComponent
+    AddPostComponent,
+    PostDetailsComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

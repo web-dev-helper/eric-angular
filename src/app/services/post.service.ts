@@ -33,4 +33,7 @@ export class PostService {
     return this.postsRef.update(id, post);
   }
 
+  deletePost(id: string){
+    return this.postsRef.remove(id);
+  }
 }

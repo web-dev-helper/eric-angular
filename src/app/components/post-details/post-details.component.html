@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-3">
+    <button routerLink="/board-list" class="btn btn-block">
+      <clr-icon shape="undo"></clr-icon>
+      Back To Dashboard
+    </button>
+  </div>
+  <div class="col-md-6"></div>
+  <div class="col-md-3">
+    <a [routerLink]="['/edit-post/'+id]" class="btn btn-dark">
+      Edit
+    </a>
+    <button class="btn btn-danger" (click)="onDeleteClick()">
+      Delete
+    </button>
+  </div>
+</div>
+<hr>
+<div *ngIf="post" class="card">
+  <h3 class="card-header">
+    {{post.title}}
+  </h3>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Author: {{post.author}}</h4>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        {{post.content}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
