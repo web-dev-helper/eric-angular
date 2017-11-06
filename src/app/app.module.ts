@@ -15,6 +15,7 @@ import { AboutComponent } from './components/about/about.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { environment } from '../environments/environment';
 import { PostService } from './services/post.service';
+import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
@@ -57,7 +58,8 @@ const routes: Routes = [
   providers: [
     AngularFireDatabase,
     AngularFireDatabaseModule,
-    PostService
+    PostService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

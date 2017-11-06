@@ -8,26 +8,26 @@
   <div class="header-nav">
       <a routerLink="/board-list"
         routerLinkActive="active" 
-        class="nav-link nav-text">Dashboard</a>
+        class="nav-link nav-text"
+        *ngIf="loginInd">Dashboard</a>
       <a routerLink="/about" 
         routerLinkActive="active"
         class="nav-link nav-text">About</a>
   </div>
   <div class="header-actions">
         <clr-dropdown>
-            <button class="nav-icon" clrDropdownTrigger>
-                <div *ngIf="loginInd; else elseBlock">
-                    <clr-icon shape="user" class="is-solid"></clr-icon>
-                </div>
-                <ng-template #elseBlock>
-                    <clr-icon shape="user"></clr-icon>
-                </ng-template>
+            <button *ngIf="loginInd" class="nav-text" clrDropdownTrigger>
+                {{loggedInUser}}
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <button *ngIf="!loginInd" class="nav-icon" clrDropdownTrigger>
+                <clr-icon shape="user"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
             <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                 <div *ngIf="loginInd; else elseBlock">
                     <a href="..." clrDropdownItem>Preferences</a>
-                    <a href="..." clrDropdownItem>Log out</a>
+                    <a clrDropdownItem (click)="onLogoutClick()">Log out</a>
                 </div>
                 <ng-template #elseBlock>
                         <a routerLink="/login" routerLinkActive="active" clrDropdownItem>Login</a>
