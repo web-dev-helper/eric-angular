@@ -8,14 +8,8 @@
         <div class="login-group">
             <input class="email" type="text" [(ngModel)]="email" name="email" placeholder="Email">
             <input class="password" type="password" [(ngModel)]="password" name="password" placeholder="Password">
-            <div class="checkbox">
-                <input type="checkbox" id="rememberme">
-                <label for="rememberme">
-                    Remember me
-                </label>
-            </div>
             <button type="submit" class="btn btn-primary">Login</button>
-            <a href="javascript://" class="signup">Sign up for a new account</a>
+            <a routerLink="/register" class="signup">Sign up for a new account</a>
         </div>
     </form>
 </div>

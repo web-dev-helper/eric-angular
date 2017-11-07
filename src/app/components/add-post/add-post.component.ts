@@ -3,6 +3,7 @@ import { Post } from '../../models/Post'
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service'; 
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-post',
@@ -20,10 +21,16 @@ export class AddPostComponent implements OnInit {
   constructor(
     private flashMessagesService: FlashMessagesService,
     private router: Router,
-    private postService: PostService
+    private postService: PostService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.authService.getAuth().subscribe(auth => {
+      if(auth){
+        this.post.author = auth.email;
+      } 
+    })
   }
 
   onSubmit({value, valid}: {value: Post, valid: boolean}){

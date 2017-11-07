@@ -1,3 +1,30 @@
-<p>
-  register works!
-</p>
+
+<form (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Use your email to create an account now
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    Email
+                </div>
+                <div class="card-text">
+                  <input class="email" type="text" [(ngModel)]="email" name="email" placeholder="Email">
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    Password
+                </div>
+                <div class="card-text">
+                  <input class="password" type="password" [(ngModel)]="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary" (submit)="onSubmit()">Register</button></div>
+        </div>
+    </div>
+  </div>
+</form>

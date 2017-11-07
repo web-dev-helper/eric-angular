@@ -22,15 +22,17 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component'
+import { AuthGuard } from './guards/auth.guard'
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'about', component:AboutComponent},
-  {path:'board-list', component:BoardListComponent},
+  {path:'register', component:RegisterComponent},
+  {path:'board-list', component:BoardListComponent, canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent},
-  {path:'add-post', component:AddPostComponent},
-  {path:'post/:id', component: PostDetailsComponent},
-  {path:'edit-post/:id', component: EditPostComponent}
+  {path:'add-post', component:AddPostComponent, canActivate:[AuthGuard]},
+  {path:'post/:id', component: PostDetailsComponent, canActivate:[AuthGuard]},
+  {path:'edit-post/:id', component: EditPostComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -59,7 +61,8 @@ const routes: Routes = [
     AngularFireDatabase,
     AngularFireDatabaseModule,
     PostService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

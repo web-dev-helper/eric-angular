@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, ActivatedRoute, Params} from '@angular/router';
-import { Post } from '../../models/Post'
+import { Post } from '../../models/Post';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -20,13 +21,19 @@ export class EditPostComponent implements OnInit {
     private postService: PostService, 
     private router: Router,
     private route: ActivatedRoute,
-    private flashMessagesService: FlashMessagesService
+    private flashMessagesService: FlashMessagesService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.postService.getPost(this.id).subscribe(post => {
       this.post = post;
+      this.authService.getAuth().subscribe(auth => {
+        if(auth.email != post.author){
+          this.router.navigate(['post/' + this.id]);
+        } 
+      })
     })
   }
 

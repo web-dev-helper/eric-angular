@@ -7,10 +7,14 @@
   </div>
   <div class="col-md-6"></div>
   <div class="col-md-3">
-    <a [routerLink]="['/edit-post/'+id]" class="btn btn-dark">
+    <button class="btn btn-dark" 
+      [routerLink]="['/edit-post/'+id]"
+      [disabled]="!enableEdit">
       Edit
-    </a>
-    <button class="btn btn-danger" (click)="onDeleteClick()">
+    </button>
+    <button class="btn btn-danger" 
+      (click)="onDeleteClick()"
+      [disabled]="!enableEdit">
       Delete
     </button>
   </div>

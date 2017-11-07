@@ -41,17 +41,18 @@
         <div class="form-group">
           <label for="author">Author</label>
           <label for="author"
-            aria-haspopup="true"
-            role="tooltip"
-            class="tooltip tooltip-validation tooltip-md"
-            [class.invalid]="authorInput.invalid && (authorInput.dirty || authorInput.touched)">         
-            <input type="text" id="author" placeholder="Enter your name"
-              [(ngModel)]="post.author"
-              name="author"
-              #authorInput = "ngModel"
-              minlength="2"
-              required
-            >
+          aria-haspopup="true"
+          role="tooltip"
+          class="tooltip tooltip-validation tooltip-md"
+          [class.invalid]="authorInput.invalid && (authorInput.dirty || authorInput.touched)">         
+          <input type="text" id="author" [placeholder]="!post.author ? 'Enter your name' : post.author"
+            [(ngModel)]="post.author"
+            name="author"
+            #authorInput = "ngModel"
+            minlength="2"
+            required
+            [readonly]="post.author"
+          >
             <span class="tooltip-content">
               <div *ngIf="authorInput.errors?.required && (authorInput.dirty || authorInput.touched)">
                 Author is required
