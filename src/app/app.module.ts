@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClarityModule } from 'clarity-angular';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -19,6 +19,7 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { AddPostReactiveFormComponent } from './components/add-post-reactive-form/add-post-reactive-form.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component'
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'board-list', component:BoardListComponent, canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent},
   {path:'add-post', component:AddPostComponent, canActivate:[AuthGuard]},
+  {path:'add-post-reactive-form', component:AddPostReactiveFormComponent, canActivate:[AuthGuard]},
   {path:'post/:id', component: PostDetailsComponent, canActivate:[AuthGuard]},
   {path:'edit-post/:id', component: EditPostComponent, canActivate:[AuthGuard]}
 ]
@@ -45,12 +47,14 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     AddPostComponent,
+    AddPostReactiveFormComponent,
     PostDetailsComponent,
     EditPostComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     ClarityModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),

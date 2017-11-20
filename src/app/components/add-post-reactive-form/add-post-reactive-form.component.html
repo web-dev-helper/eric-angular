@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-md-3">
+    <button routerLink="/board-list" class="btn btn-block">
+      <clr-icon shape="undo"></clr-icon>
+      Back To Dashboard
+    </button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Add Post
+  </div>
+  <div class="card-block">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <label for="title"
+          aria-haspopup="true"
+          role="tooltip"
+          class="tooltip tooltip-validation tooltip-md"
+          [class.invalid]="addForm.get('title').invalid && (addForm.get('title').touched)">         
+          <input type="text" id="title" placeholder="Enter title"
+            formControlName="title"
+          >
+          <span class="tooltip-content">
+            <div *ngIf="addForm.get('title').hasError('required') && (addForm.get('title').touched)">
+              Title is required
+            </div>
+            <div *ngIf="addForm.get('title').hasError('minlength') && (addForm.get('title').touched)">
+              Title should be at least 2 characters
+            </div>
+          </span>
+        </label>
+      </div>
+      
+      <div class="form-group">
+        <label for="author">Author</label>
+        <label for="author"
+          aria-haspopup="true"
+          role="tooltip"
+          class="tooltip tooltip-validation tooltip-md"
+          [class.invalid]="addForm.get('author').invalid && (addForm.get('author').touched)">         
+          <input type="text" id="author"
+            name="author"
+            formControlName="author"
+            [readonly]="addForm.get('author')"
+          >
+          <span class="tooltip-content">
+            <div *ngIf="addForm.get('author').hasError('required') && (addForm.get('author').touched)">
+              Author is required
+            </div>
+            <div *ngIf="addForm.get('author').hasError('minlength') && (addForm.get('author').touched)">
+              Author should be at least 2 characters
+            </div>
+          </span>
+        </label>
+      </div>
+      
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea type="text" id="content" placeholder="Please write content"
+          name="content"
+          rows="5"
+          formControlName="content"
+        ></textarea>
+        <div class="alert alert-danger col-md-12" 
+          *ngIf="addForm.get('content').hasError('required') && (addForm.get('content').touched)">
+          <div class="alert-item static">
+              <div class="alert-icon-wrapper">
+                  <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+              </div>
+              <span class="alert-text">Content is required</span>
+          </div>  
+        </div>
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary btn-block"
+        [disabled]="addForm.invalid">
+    </form>
+  </div>
+</div>
