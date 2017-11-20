@@ -31,3 +31,6 @@ https://web-dev-helper.github.io/eric-angular/
 
 ## Command to build
 `ng build --prod --output-path docs --base-href "https://web-dev-helper.github.io/eric-angular/"`
+
+## References
+https://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/
